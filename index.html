@@ -2,21 +2,84 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Star Wars RPG</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/css/reset.css">
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Star Wars RPG</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/style.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron-fluid">
+            <h1 class="display-4">Star Wars RPG Game</h1>
+            <p class="lead">This is a simple game where you pick the charecter you want to fight with and then battle
+                the remaining payers from the oppsing side. Whos
+                s side are you on the dark side or the reble side!!!!!!!
+            </p>
+            <!-- <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <h2>Rebels</h2>
+                <div id="players">
+                   
+                    <img id="luke" class="reble-button" src="assets/img/luke.gif" value="luke">
+                    <img class="reble-button" src="assets/img/chewy.gif" value="chewy">
+                    <img class="reble-button" src="assets/img/han.gif" value="han">
+                    <!-- <img class="dark-button" src="assets/img/boba.gif" value="boba">
+                    <img class="dark-button" src="assets/img/storm.gif" value="storm">
+                    <img class="dark-button" src="assets/img/darth.gif" value="darth"> -->
+                </div>
+            </div>
+                <div class="col-md-8"> 
+                        <div class="row">
+                         <div id="player1-score" class="col-md-6 text-center">
+                         <button type="button" class="btn btn-success">Player 1</button>
+                         <button type="button" class="btn btn-success">Staminia: 100</button>
+                         </div>
+                         <div id="player1" class="col-md-4"></div>
+                         <div id="player2-score" class="col-md-6 text-center"> 
+                         <button type="button" class="btn btn-danger">Player 2</button>
+                         <button type="button" class="btn btn-danger">Staminia: 100</button>
+                         </div>
+                         <div id="player2" class="col-md-4"> </div>
+                </div>
+            </div>
+                <div class="col-md-2">
+                    <h2>Dark SIde</h2>
+                        <img id="boba" class="dark-button" src="assets/img/boba.gif" value="boba">
+                        <img class="dark-button" src="assets/img/storm.gif" value="storm">
+                        <img class="dark-button" src="assets/img/darth.gif" value="darth">
+                </div>
+
+  
+                </div>
+
+
+
+
+                <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
-        <script type="text/javascript" src="assets/javascript/game.js"></script>
-    </body>
+
+
+                <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+                <script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+
 </html>

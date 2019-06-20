@@ -1,0 +1,81 @@
+body {
+    background-image: url("../img/death.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background: grey; */
+}
+h2 {
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+font {
+    font-family: 'Roboto', sans-serif;
+}
+
+.jumbotron-fluid {
+    color: white;
+    
+}
+
+p { 
+    color: white;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+
+}
+.row {
+    /* float: left; */
+    /* background-color: grey; */
+   
+    
+}
+
+.col-md-2 {
+    /* opacity: 0.8; */
+    background: black;
+}
+
+.col-md-8 {
+    /* opacity: 0.9; */
+    background-image: url("../img/bg_desert.jpg");
+    background-size: cover;
+}
+
+.reble {
+    border-radius: 15px;
+    border: 3px solid #49fb35;    
+  }
+
+  .dark {
+    border-radius: 15px;
+    border: 3px solid red;    
+  }
+  
+  /* button {
+    position: absolute;
+    left: 0;
+    top: 0;
+  } */
+  #player1 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  #player2 {
+    position: absolute;
+    right: 100px;
+    bottom: 0;
+  }
+
+  .grow-image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .highlight {
+    background: red;
+  }
