@@ -1,61 +1,98 @@
 var players = {
     reble1: {
-    name: "luke",
+    name: "Luke",
     healthPoints: 100,
     attackPoints: 10,
     counterPoints: 150
     },   
     reble2: {
-    name: "chewy",
+    name: "Chewbacca",
     healthPoints: 100,
     attackPoints: 6,
     counterPoints: 175
     },   
     reble3: {
-    name: "han",
+    name: "Han Solo",
     healthPoints: 100,
     attackPoints: 7,
     counterPoints: 120
     },   
     dark1: {
-    name: "boba",
+    name: "Boba Fett",
     healthPoints: 100,
     attackPoints: 8,
     counterPoints: 150
     },   
     dark2: {
-    name: "storm",
+    name: "Stormtrooper",
     healthPoints: 100,
     attackPoints: 5,
     counterPoints: 100
     },   
     dark3: {
-    name: "darth",
+    name: "Darth Vader",
     healthPoints: 100,
     attackPoints: 9,
     counterPoints: 180
     }
     };
 
-var payer1 ="";
 
-var payer2 ="";
+var selectedRebel1 = [];
+var selectedDark1 = [];
+var attacker = "";
+
+
+
+
 
 
 // Each character in the game has 3 attributes: `Health Points`, `Attack Power` and `Counter Attack Power`.
 console.log(players.reble1.name);
 // Click player and add colored border on toggle
+// if(attacker === )
+
 $(".reble-button").click(function(){
-    $( this ).toggleClass ("grow-image");
+if($(this).is("#luke")) {
+    console.log("Player 1 picked Luke");
     $("#luke").prependTo("#player1");
+    $( this ).addClass("grow-image");
+    var selectedRebel1 = jQuery.extend({}, players.reble1);
+    
+    $("#player1Name").text(players.reble1.name);
+    $("#health1").text("Health: " + players.reble1.healthPoints);
+    $("#power1").text("Power: " + players.reble1.attackPoints);
+    console.log(selectedRebel1);
+}
 });
-
-
 
 $(".dark-button").click(function(){
-    $( this ).toggleClass ("grow-image");
+if($(this).is("#boba")) {
+    console.log("Player 2 picked Boba Fett");
     $("#boba").prependTo("#player2");
+    $( this ).addClass ("grow-image");
+    var selectedDark1 = jQuery.extend({}, players.dark1);
+    console.log(selectedDark1);
+    $("#player2Name").text(players.dark1.name);
+    $("#health2").text("Health: " + players.dark1.healthPoints);
+    $("#power2").text("Power: " + players.dark1.attackPoints);
+    
+}
+
 });
+
+
+// $(".dark-button").click(function(){
+//     if($(this).is("#boba")) {
+//         console.log("Looks like you picked Boba");
+//         $("#boba").prependTo("#player2");
+//         $( this ).addClass ("grow-image");
+//         selectedDark1 = jQuery.extend(true, {}, players.dark1);
+//         console.log(selectedDark1);
+//     }
+    
+//     });
+    
 
 // Each time the player attacks, their character's Attack Power increases by its base Attack Power. 
 
