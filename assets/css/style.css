@@ -40,6 +40,7 @@ img {
 }
 
 .col-md-8 {
+  height: 496px;
     /* opacity: 0.9; */
     background-image: url("../img/bg_desert.jpg");
     background-size: cover;

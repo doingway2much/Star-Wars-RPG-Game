@@ -2,40 +2,44 @@ var players = {
     reble1: {
     name: "luke",
     healthPoints: 100,
-    attackPoints: 100,
-    counterPoints: 100
+    attackPoints: 10,
+    counterPoints: 150
     },   
     reble2: {
     name: "chewy",
     healthPoints: 100,
-    attackPoints: 100,
-    counterPoints: 100
+    attackPoints: 6,
+    counterPoints: 175
     },   
     reble3: {
     name: "han",
     healthPoints: 100,
-    attackPoints: 100,
-    counterPoints: 100
+    attackPoints: 7,
+    counterPoints: 120
     },   
     dark1: {
     name: "boba",
     healthPoints: 100,
-    attackPoints: 100,
-    counterPoints: 100
+    attackPoints: 8,
+    counterPoints: 150
     },   
     dark2: {
     name: "storm",
     healthPoints: 100,
-    attackPoints: 100,
+    attackPoints: 5,
     counterPoints: 100
     },   
     dark3: {
     name: "darth",
     healthPoints: 100,
-    attackPoints: 100,
-    counterPoints: 100
+    attackPoints: 9,
+    counterPoints: 180
     }
     };
+
+var payer1 ="";
+
+var payer2 ="";
 
 
 // Each character in the game has 3 attributes: `Health Points`, `Attack Power` and `Counter Attack Power`.
