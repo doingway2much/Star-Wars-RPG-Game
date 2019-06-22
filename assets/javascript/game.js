@@ -57,7 +57,7 @@ if($(this).is("#luke")) {
     console.log("Player 1 picked Luke");
     $("#luke").prependTo("#player1");
     $( this ).addClass("grow-image");
-    var selectedRebel1 = jQuery.extend({}, players.reble1);
+    selectedRebel1 = jQuery.extend(true, {}, players.reble1);
     
     $("#player1Name").text(players.reble1.name);
     $("#health1").text("Health: " + players.reble1.healthPoints);
@@ -71,28 +71,75 @@ if($(this).is("#boba")) {
     console.log("Player 2 picked Boba Fett");
     $("#boba").prependTo("#player2");
     $( this ).addClass ("grow-image");
-    var selectedDark1 = jQuery.extend({}, players.dark1);
+    selectedDark1 = jQuery.extend(true, {}, players.dark1);
     console.log(selectedDark1);
     $("#player2Name").text(players.dark1.name);
     $("#health2").text("Health: " + players.dark1.healthPoints);
     $("#power2").text("Power: " + players.dark1.attackPoints);
     
+} if($(this).is("#storm")) {
+    console.log("Player 2 picked Stormtrooper");
+    $("#storm").detach().prependTo("#player2");
+    $( this ).addClass ("grow-image");
+    selectedDark1 = jQuery.extend(true, {}, players.dark2);
+    console.log(selectedDark1);
+    $("#player2Name").text(players.dark2.name);
+    $("#health2").text("Health: " + players.dark2.healthPoints);
+    $("#power2").text("Power: " + players.dark2.attackPoints);
+
+} if($(this).is("#darth")) {
+    console.log("Player 2 picked Darth Vader");
+    $("#darth").detach().prependTo("#player2");
+    $( this ).addClass ("grow-image");
+    selectedDark1 = jQuery.extend(true, {}, players.dark3);
+    console.log(selectedDark1);
+    $("#player2Name").text(players.dark3.name);
+    $("#health2").text("Health: " + players.dark3.healthPoints);
+    $("#power2").text("Power: " + players.dark3.attackPoints);
+
+
+}});
+
+if(selectedRebel1.length < 0 ){ 
+    console.log("Player one picked")
 }
 
-});
+console.log(selectedRebel1);
+$("#attack1").click(function(){
+    console.log(selectedRebel1.attackPoints);
+    console.log(selectedDark1.healthPoints);
+    selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.attackPoints
+    selectedDark1.healthPoints = selectedDark1.healthPoints - selectedRebel1.attackPoints ;
+    console.log(selectedDark1.healthPoints);
+    console.log(selectedRebel1.healthPoints);
+    $("#health1").text("Health: " + selectedRebel1.healthPoints);
+    $("#health2").text("Health: " + selectedDark1.healthPoints);
+    if(selectedDark1.healthPoints < 0) { 
+        alert("You Win select another enemy from the dark side");
+        if(selectedDark1.name === "Boba Fett") {
+        $("#boba").detach();
+        }if (selectedDark1.name === "Stormtrooper"){
+        $("#storm").detach();
+        }if (selectedDark1.name === "Darth Vader"){
+        $("#darth").detach();
+        }
+    if (selectedRebel1.healthPoints < 0 ) {
+        alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
+        };
+        resetPlayer2();
+        selectedDark1 = [];
+    }
 
 
-// $(".dark-button").click(function(){
-//     if($(this).is("#boba")) {
-//         console.log("Looks like you picked Boba");
-//         $("#boba").prependTo("#player2");
-//         $( this ).addClass ("grow-image");
-//         selectedDark1 = jQuery.extend(true, {}, players.dark1);
-//         console.log(selectedDark1);
-//     }
+    });
     
-//     });
-    
+    function resetPlayer2() { 
+        selectedDark1 = [];
+        $("#player2Name").text("Player 2");
+        $("#health2").text("Health: ");
+        $("#power2").text("Power: ");
+
+    };
 
 // Each time the player attacks, their character's Attack Power increases by its base Attack Power. 
 
