@@ -1,26 +1,26 @@
 var players = {
     reble1: {
     name: "Luke",
-    healthPoints: 100,
-    attackPoints: 10,
+    healthPoints: 120,
+    attackPoints: 24,
     counterPoints: 150
     },   
     reble2: {
     name: "Chewbacca",
-    healthPoints: 100,
-    attackPoints: 6,
+    healthPoints: 105,
+    attackPoints: 18,
     counterPoints: 175
     },   
     reble3: {
     name: "Han Solo",
-    healthPoints: 100,
-    attackPoints: 7,
+    healthPoints: 110,
+    attackPoints: 20,
     counterPoints: 120
     },   
     dark1: {
     name: "Boba Fett",
     healthPoints: 100,
-    attackPoints: 8,
+    attackPoints: 7,
     counterPoints: 150
     },   
     dark2: {
@@ -32,7 +32,7 @@ var players = {
     dark3: {
     name: "Darth Vader",
     healthPoints: 100,
-    attackPoints: 9,
+    attackPoints: 11,
     counterPoints: 180
     }
     };
@@ -50,7 +50,7 @@ $("#replay").click(function() {
 
 $(".reble-button").click(function(){
 if($(this).is("#luke")) {
-    if(player1selected !== "true"){
+    if(player1selected.length === 0){
     console.log("Player 1 picked Luke");
     $("#luke").prependTo("#player1");
     $( this ).addClass("grow-image");
@@ -61,11 +61,11 @@ if($(this).is("#luke")) {
     console.log(selectedRebel1);
     player1selected.push("true");
     console.log(player1selected);
-
+    }
 
 
 }if($(this).is("#chewy")) {
-    if(player1selected !== "true"){
+    if(player1selected.length === 0){
     console.log("Player 1 picked Chewbacca");
     $("#chewy").prependTo("#player1");
     $( this ).addClass("grow-image");
@@ -75,9 +75,10 @@ if($(this).is("#luke")) {
     $("#power1").text("Power: " + players.reble2.attackPoints);
     console.log(selectedRebel1);
     player1selected.push("true");
+    }
 
 }if($(this).is("#han")) {
-    if(player1selected !== "true"){
+    if(player1selected.length === 0){
     console.log("Player 1 picked Han Solo");
     $("#han").prependTo("#player1");
     $( this ).addClass("grow-image");
@@ -87,8 +88,9 @@ if($(this).is("#luke")) {
     $("#power1").text("Power: " + players.reble3.attackPoints);
     console.log(selectedRebel1);
     player1selected.push("true");
-}
-}}}});
+    }
+
+}});
 
 
 $(".dark-button").click(function(){
@@ -153,7 +155,8 @@ $("#attack1").click(function(){
     // console.log(selectedRebel1.attackPoints);
     // console.log(selectedDark1.healthPoints);
     selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.attackPoints;
-    selectedDark1.healthPoints = selectedDark1.healthPoints - selectedRebel1.attackPoints;
+
+    selectedDark1.healthPoints = selectedDark1.healthPoints - selectedRebel1.attackPoints ^ 2;
     // console.log(selectedDark1.healthPoints);
     if(player1selected == "true" && player2selected == "true") {
     if  (selectedRebel1.healthPoints < 0 ) {
@@ -166,7 +169,7 @@ $("#attack1").click(function(){
         resetPlayer2();
         $("#player1").detach().append(".rebels");
         $("#replay").html("<button id='replay' type='button' class='btn btn-outline-warning'>PLAY AGAIN </button>");
-        
+        player1selected = [];
         }
 
     $("#health1").text("Health: " + selectedRebel1.healthPoints);
@@ -181,10 +184,8 @@ $("#attack1").click(function(){
         $("#darth").detach();
         }
         resetPlayer2();
-        console.log(player2selected);
         player2selected = [];
-        console.log(player2selected);
-        
+     
         
         
     }}});
