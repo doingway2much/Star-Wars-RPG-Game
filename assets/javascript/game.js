@@ -43,7 +43,10 @@ var selectedDark1 = [];
 var attacker = "";
 var player1selected = [];
 var player2selected = [];
-
+$("#replay").click(function() {
+    console.log("I was clicked");
+    location.reload();
+});
 
 $(".reble-button").click(function(){
 if($(this).is("#luke")) {
@@ -154,11 +157,15 @@ $("#attack1").click(function(){
     // console.log(selectedDark1.healthPoints);
     if(player1selected == "true" && player2selected == "true") {
     if  (selectedRebel1.healthPoints < 0 ) {
+        
         alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
-        resetPlayer2();
         selectedDark1 = [];
         $("player1 img").detach();
+        $(".col-md-8").addClass("game-over");
         resetPlayer1();
+        resetPlayer2();
+        $("#player1").detach().append(".rebels");
+        $("#replay").html("<button id='replay' type='button' class='btn btn-outline-warning'>PLAY AGAIN </button>");
         
         }
 
@@ -178,5 +185,8 @@ $("#attack1").click(function(){
         player2selected = [];
         console.log(player2selected);
         
+        
+        
     }}});
     
+   

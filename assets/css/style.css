@@ -85,3 +85,14 @@ img {
   .highlight {
     background: red;
   }
+
+  .game-over {
+  background-image: url("../img/go.PNG");
+  background-size: cover;
+}
+
+#replay {
+  margin-top: 180px;
+  margin-left: 150px;
+
+}
