@@ -41,33 +41,57 @@ var players = {
 var selectedRebel1 = [];
 var selectedDark1 = [];
 var attacker = "";
+var player1selected = [];
+var player2selected = [];
 
-
-
-
-
-
-// Each character in the game has 3 attributes: `Health Points`, `Attack Power` and `Counter Attack Power`.
-console.log(players.reble1.name);
-// Click player and add colored border on toggle
-// if(attacker === )
 
 $(".reble-button").click(function(){
 if($(this).is("#luke")) {
+    if(player1selected !== "true"){
     console.log("Player 1 picked Luke");
     $("#luke").prependTo("#player1");
     $( this ).addClass("grow-image");
     selectedRebel1 = jQuery.extend(true, {}, players.reble1);
-    
     $("#player1Name").text(players.reble1.name);
     $("#health1").text("Health: " + players.reble1.healthPoints);
     $("#power1").text("Power: " + players.reble1.attackPoints);
     console.log(selectedRebel1);
+    player1selected.push("true");
+    console.log(player1selected);
+
+
+
+}if($(this).is("#chewy")) {
+    if(player1selected !== "true"){
+    console.log("Player 1 picked Chewbacca");
+    $("#chewy").prependTo("#player1");
+    $( this ).addClass("grow-image");
+    selectedRebel1 = jQuery.extend(true, {}, players.reble2);
+    $("#player1Name").text(players.reble2.name);
+    $("#health1").text("Health: " + players.reble2.healthPoints);
+    $("#power1").text("Power: " + players.reble2.attackPoints);
+    console.log(selectedRebel1);
+    player1selected.push("true");
+
+}if($(this).is("#han")) {
+    if(player1selected !== "true"){
+    console.log("Player 1 picked Han Solo");
+    $("#han").prependTo("#player1");
+    $( this ).addClass("grow-image");
+    selectedRebel1 = jQuery.extend(true, {}, players.reble3);
+    $("#player1Name").text(players.reble3.name);
+    $("#health1").text("Health: " + players.reble3.healthPoints);
+    $("#power1").text("Power: " + players.reble3.attackPoints);
+    console.log(selectedRebel1);
+    player1selected.push("true");
 }
-});
+}}}});
+
 
 $(".dark-button").click(function(){
+    console.log(player2selected);
 if($(this).is("#boba")) {
+    if(player2selected.length === 0){
     console.log("Player 2 picked Boba Fett");
     $("#boba").prependTo("#player2");
     $( this ).addClass ("grow-image");
@@ -76,8 +100,11 @@ if($(this).is("#boba")) {
     $("#player2Name").text(players.dark1.name);
     $("#health2").text("Health: " + players.dark1.healthPoints);
     $("#power2").text("Power: " + players.dark1.attackPoints);
-    
+    player2selected.push("true");
+    console.log(player2selected);
+    }
 } if($(this).is("#storm")) {
+    if(player2selected.length === 0){
     console.log("Player 2 picked Stormtrooper");
     $("#storm").detach().prependTo("#player2");
     $( this ).addClass ("grow-image");
@@ -86,8 +113,10 @@ if($(this).is("#boba")) {
     $("#player2Name").text(players.dark2.name);
     $("#health2").text("Health: " + players.dark2.healthPoints);
     $("#power2").text("Power: " + players.dark2.attackPoints);
-
-} if($(this).is("#darth")) {
+    player2selected.push("true");
+    }
+} if($(this).is("#darth") ) {
+    if(player2selected.length === 0){
     console.log("Player 2 picked Darth Vader");
     $("#darth").detach().prependTo("#player2");
     $( this ).addClass ("grow-image");
@@ -96,25 +125,46 @@ if($(this).is("#boba")) {
     $("#player2Name").text(players.dark3.name);
     $("#health2").text("Health: " + players.dark3.healthPoints);
     $("#power2").text("Power: " + players.dark3.attackPoints);
-
+    player2selected.push("true");
+    }
 
 }});
 
-if(selectedRebel1.length < 0 ){ 
-    console.log("Player one picked")
-}
+function resetPlayer2() { 
+    selectedDark1 = [];
+    $("#player2Name").text("Player 2");
+    $("#power2").text("Power: ");
+    $("#health2").text("Health:");
+};
 
-console.log(selectedRebel1);
+function resetPlayer1() { 
+    selectedRebel1 = [];
+    $("#health1").text("Health:");
+    $("#player1Name").text("Player 1");
+    $("#power1").text("Power: ");
+ 
+};
+
+
 $("#attack1").click(function(){
-    console.log(selectedRebel1.attackPoints);
-    console.log(selectedDark1.healthPoints);
-    selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.attackPoints
-    selectedDark1.healthPoints = selectedDark1.healthPoints - selectedRebel1.attackPoints ;
-    console.log(selectedDark1.healthPoints);
-    console.log(selectedRebel1.healthPoints);
+    // console.log(selectedRebel1.attackPoints);
+    // console.log(selectedDark1.healthPoints);
+    selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.attackPoints;
+    selectedDark1.healthPoints = selectedDark1.healthPoints - selectedRebel1.attackPoints;
+    // console.log(selectedDark1.healthPoints);
+    if(player1selected == "true" && player2selected == "true") {
+    if  (selectedRebel1.healthPoints < 0 ) {
+        alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
+        resetPlayer2();
+        selectedDark1 = [];
+        $("player1 img").detach();
+        resetPlayer1();
+        
+        }
+
     $("#health1").text("Health: " + selectedRebel1.healthPoints);
     $("#health2").text("Health: " + selectedDark1.healthPoints);
-    if(selectedDark1.healthPoints < 0) { 
+    if (selectedDark1.healthPoints < 0) { 
         alert("You Win select another enemy from the dark side");
         if(selectedDark1.name === "Boba Fett") {
         $("#boba").detach();
@@ -123,36 +173,10 @@ $("#attack1").click(function(){
         }if (selectedDark1.name === "Darth Vader"){
         $("#darth").detach();
         }
-    if (selectedRebel1.healthPoints < 0 ) {
-        alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
-        };
         resetPlayer2();
-        selectedDark1 = [];
-    }
-
-
-    });
+        console.log(player2selected);
+        player2selected = [];
+        console.log(player2selected);
+        
+    }}});
     
-    function resetPlayer2() { 
-        selectedDark1 = [];
-        $("#player2Name").text("Player 2");
-        $("#health2").text("Health: ");
-        $("#power2").text("Power: ");
-
-    };
-
-// Each time the player attacks, their character's Attack Power increases by its base Attack Power. 
-
-// For example, if the base Attack Power is 6, each attack will increase the Attack Power by 6 (12, 18, 24, 30 and so on).
-
-// The enemy character only has `Counter Attack Power`. 
-
-// Unlike the player's `Attack Points`, `Counter Attack Power` never changes.
-
-// The `Health Points`, `Attack Power` and `Counter Attack Power` of each character must differ.
-
-// No characters in the game can heal or recover Health Points. 
-
-// A winning player must pick their characters wisely by first fighting an enemy with low `Counter Attack Power`. This will allow them to grind `Attack Power` and to take on enemies before they lose all of their `Health Points`. Healing options would mess with this dynamic.
-
-// Your players should be able to win and lose the game no matter what character they choose. The challenge should come from picking the right enemies, not choosing the strongest player.
