@@ -43,10 +43,17 @@ var selectedDark1 = [];
 var attacker = "";
 var player1selected = [];
 var player2selected = [];
+var wins = "";
 $("#replay").click(function() {
     console.log("I was clicked");
     location.reload();
 });
+
+// $(".reble-button").hover(function(){
+//     if($(this).is("#luke")) {
+//     console.log("Hover works");
+//     $("#player1details").html("<div class='player1details'>Player Name:" + players.reble1.name + "</div>");
+// }});
 
 $(".reble-button").click(function(){
 if($(this).is("#luke")) {
@@ -61,6 +68,8 @@ if($(this).is("#luke")) {
     console.log(selectedRebel1);
     player1selected.push("true");
     console.log(player1selected);
+    var lukeSound = new Audio("assets/audio/luke.wav");
+    lukeSound.play();
     }
 
 
@@ -75,6 +84,8 @@ if($(this).is("#luke")) {
     $("#power1").text("Power: " + players.reble2.attackPoints);
     console.log(selectedRebel1);
     player1selected.push("true");
+    var chewySound = new Audio("assets/audio/chewy.wav");
+    chewySound.play();
     }
 
 }if($(this).is("#han")) {
@@ -88,6 +99,8 @@ if($(this).is("#luke")) {
     $("#power1").text("Power: " + players.reble3.attackPoints);
     console.log(selectedRebel1);
     player1selected.push("true");
+    var hanSound = new Audio("assets/audio/han.wav");
+    hanSound.play();
     }
 
 }});
@@ -107,6 +120,8 @@ if($(this).is("#boba")) {
     $("#power2").text("Power: " + players.dark1.attackPoints);
     player2selected.push("true");
     console.log(player2selected);
+    var bobaSound = new Audio("assets/audio/boba.wav");
+    bobaSound.play();
     }
 } if($(this).is("#storm")) {
     if(player2selected.length === 0){
@@ -119,6 +134,8 @@ if($(this).is("#boba")) {
     $("#health2").text("Health: " + players.dark2.healthPoints);
     $("#power2").text("Power: " + players.dark2.attackPoints);
     player2selected.push("true");
+    var stormSound = new Audio("assets/audio/storm.wav");
+    stormSound.play();
     }
 } if($(this).is("#darth") ) {
     if(player2selected.length === 0){
@@ -131,6 +148,8 @@ if($(this).is("#boba")) {
     $("#health2").text("Health: " + players.dark3.healthPoints);
     $("#power2").text("Power: " + players.dark3.attackPoints);
     player2selected.push("true");
+    var darthSound = new Audio("assets/audio/darth.wav");
+    darthSound.play();
     }
 
 }});
@@ -152,13 +171,15 @@ function resetPlayer1() {
 
 
 $("#attack1").click(function(){
+    
     // console.log(selectedRebel1.attackPoints);
     // console.log(selectedDark1.healthPoints);
     selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.attackPoints;
-
     selectedDark1.healthPoints = selectedDark1.healthPoints - selectedRebel1.attackPoints ^ 2;
-    // console.log(selectedDark1.healthPoints);
+    var playMarch = new Audio("assets/audio/saberup.wav");
+    playMarch.play();
     if(player1selected == "true" && player2selected == "true") {
+        
     if  (selectedRebel1.healthPoints < 0 ) {
         
         alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
@@ -170,6 +191,8 @@ $("#attack1").click(function(){
         $("#player1").detach().append(".rebels");
         $("#replay").html("<button id='replay' type='button' class='btn btn-outline-warning'>PLAY AGAIN </button>");
         player1selected = [];
+        var marchSong = new Audio("assets/audio/march.mp3");
+        marchSong.play();
         }
 
     $("#health1").text("Health: " + selectedRebel1.healthPoints);
@@ -183,11 +206,23 @@ $("#attack1").click(function(){
         }if (selectedDark1.name === "Darth Vader"){
         $("#darth").detach();
         }
-        resetPlayer2();
         player2selected = [];
-     
+        resetPlayer2();
+        wins++;
+        console.log(wins);
+        if(wins === 3){
+            $("player2 img").detach();
+            $(".col-md-8").addClass("game-over");
+            resetPlayer1();
+            player2selected = [];
+            player1selected = [];
+            var winSong = new Audio("assets/audio/win.mp3");
+            winSong.play();
+            }
         
         
     }}});
+
+    
     
    
