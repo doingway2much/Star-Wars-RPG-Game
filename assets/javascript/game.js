@@ -213,6 +213,7 @@ $("#attack1").click(function(){
         alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
         selectedDark1 = [];
         $("player1 img").detach();
+        $("#updates").detach();
         $(".col-md-8").addClass("game-over");
         resetPlayer1();
         resetPlayer2();
@@ -240,6 +241,7 @@ $("#attack1").click(function(){
         console.log(wins);
         if(wins === 3){
             $("player2 img").detach();
+            $("#updates").detach();
             $(".col-md-8").addClass("game-over");
             resetPlayer1();
             player2selected = [];
