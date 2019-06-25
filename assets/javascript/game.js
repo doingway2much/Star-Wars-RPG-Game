@@ -2,38 +2,38 @@ var players = {
     reble1: {
     name: "Sky Walker",
     healthPoints: 120,
-    attackPoints: 24,
-    counterPoints: 150
+    attackPoints: 10,
+    counterPoints: 20
     },   
     reble2: {
     name: "Chewbacca",
     healthPoints: 105,
-    attackPoints: 18,
-    counterPoints: 175
+    attackPoints: 8,
+    counterPoints: 15
     },   
     reble3: {
     name: "Han Solo",
     healthPoints: 110,
-    attackPoints: 20,
-    counterPoints: 120
+    attackPoints: 7,
+    counterPoints: 8
     },   
     dark1: {
     name: "Boba Fett",
-    healthPoints: 100,
+    healthPoints: 120,
     attackPoints: 7,
-    counterPoints: 150
+    counterPoints: 14
     },   
     dark2: {
     name: "Stormtrooper",
-    healthPoints: 100,
+    healthPoints: 115,
     attackPoints: 5,
-    counterPoints: 100
+    counterPoints: 10
     },   
     dark3: {
     name: "Darth Vader",
-    healthPoints: 100,
-    attackPoints: 11,
-    counterPoints: 180
+    healthPoints: 130,
+    attackPoints: 15,
+    counterPoints: 20
     }
     };
 
@@ -44,6 +44,7 @@ var attacker = "";
 var player1selected = [];
 var player2selected = [];
 var wins = "";
+var updatedHealth;
 $("#replay").click(function() {
     console.log("I was clicked");
     location.reload();
@@ -119,7 +120,7 @@ if($(this).is("#luke")) {
     $("#power1").text("Power: " + players.reble3.attackPoints);
     console.log(selectedRebel1);
     player1selected.push("true");
-    var hanSound = new Audio("assets/audio/han.wav");
+    var hanSound = new Audio("assets/audio/han.mp3");
     hanSound.play();
     $("#hanStats").detach();
     }
@@ -198,12 +199,15 @@ $("#attack1").click(function(){
     
     // console.log(selectedRebel1.attackPoints);
     // console.log(selectedDark1.healthPoints);
-    selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.attackPoints;
-    selectedDark1.healthPoints = selectedDark1.healthPoints - selectedRebel1.attackPoints ^ 2;
-    var playMarch = new Audio("assets/audio/saberup.wav");
-    playMarch.play();
+    selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.counterPoints;
+    updatedHealth = selectedRebel1.attackPoints ^ 2;
+    selectedRebel1.attackPoints = selectedRebel1.attackPoints+ updatedHealth;
+    selectedDark1.healthPoints = selectedDark1.healthPoints - updatedHealth;
+    
     if(player1selected == "true" && player2selected == "true") {
-        
+        var playMarch = new Audio("assets/audio/saberup.wav");
+        playMarch.play();
+        $("#updates").text("You just attacked " + selectedDark1.name + " for " + updatedHealth + " points" + " and they attacked you back and caused " +  selectedDark1.attackPoints  + " damage");
     if  (selectedRebel1.healthPoints < 0 ) {
         
         alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
