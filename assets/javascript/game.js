@@ -200,14 +200,15 @@ $("#attack1").click(function(){
     // console.log(selectedRebel1.attackPoints);
     // console.log(selectedDark1.healthPoints);
     selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.counterPoints;
-    updatedHealth = selectedRebel1.attackPoints ^ 2;
-    selectedRebel1.attackPoints = selectedRebel1.attackPoints+ updatedHealth;
+    updatedHealth = selectedRebel1.attackPoints + selectedRebel1.attackPoints;
+    selectedRebel1.attackPoints = updatedHealth;
     selectedDark1.healthPoints = selectedDark1.healthPoints - updatedHealth;
     
     if(player1selected == "true" && player2selected == "true") {
         var playMarch = new Audio("assets/audio/saberup.wav");
         playMarch.play();
         $("#updates").text("You just attacked " + selectedDark1.name + " for " + updatedHealth + " points" + " and they attacked you back and caused " +  selectedDark1.attackPoints  + " damage");
+        $("#power1").text("Power: " + selectedRebel1.attackPoints);
     if  (selectedRebel1.healthPoints < 0 ) {
         
         alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
