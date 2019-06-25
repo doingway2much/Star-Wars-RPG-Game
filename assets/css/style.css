@@ -15,54 +15,48 @@ h2 {
 font {
     font-family: 'Roboto', sans-serif;
 }
- .image1 {
-   /* position: relative; */
- }
+
  .details{
-   /* position: relative; */
    top: 105px;
-   width: 300px;
+   width: 150px;
    padding-top: 10px;
+   padding-left: 10px;
    line-height: 0px;
-   font-size: 14px;
+   font-size: 10px;
    opacity: 0.7;  
-   color: green;
+   color: white;
    font-weight: bold;
    font-family: 'Roboto', sans-serif;
    background-color: black;
    margin: 0;
  }
+.imageBorder{
+  border-radius: 20px;
+  margin-bottom: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+}
 
 .jumbotron-fluid {
     color: white;   
 }
-
-/* p { 
-    color: red;
-} */
 
 img {
     width: 150px;
     height: 150px;
 
 }
-.row {
-    /* float: left; */
-    /* background-color: grey; */
-   
-    
-}
 
 .col-md-2 {
-    /* opacity: 0.8; */
-    background: black;
+  height: 740px;
+  background: black;
 }
 
 .col-md-8 {
-  height: 496px;
-    /* opacity: 0.9; */
-    background-image: url("../img/bg_ship.jpg");
-    background-size: cover;
+  height: 740px;
+  background-image: url("../img/bg_desert.jpg");
+  background-size: cover;
 }
 
 .reble {
@@ -77,14 +71,12 @@ img {
   
 
   #player1 {
-    
     position: absolute;
     left: 0;
     bottom: 0;
   }
  
   #player2 {
-
     position: absolute;
     right: 0;
     bottom: 0;
@@ -107,11 +99,11 @@ img {
 
   .game-over {
   background-image: url("../img/go.PNG");
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 #replay {
-  margin-top: 180px;
+  margin-top: 270px;
   margin-left: 150px;
 
 }

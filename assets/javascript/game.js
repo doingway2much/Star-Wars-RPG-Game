@@ -1,6 +1,6 @@
 var players = {
     reble1: {
-    name: "Luke",
+    name: "Sky Walker",
     healthPoints: 120,
     attackPoints: 24,
     counterPoints: 150
@@ -55,6 +55,24 @@ $("#replay").click(function() {
 //     $("#player1details").html("<div class='player1details'>Player Name:" + players.reble1.name + "</div>");
 // }});
 
+$("#lukeStats").html("<p>" + players.reble1.name + "</p>" + "<p>Attack Point: " + players.reble1.attackPoints + "<p>Counter Attack Points: " + players.reble1.counterPoints + "</p>" +
+"<p>Health Points: " + players.reble1.healthPoints + "</p>");
+
+$("#chewyStats").html("<p>" + players.reble2.name + "</p>" + "<p>Attack Point: " + players.reble2.attackPoints + "<p>Counter Attack Points: " + players.reble2.counterPoints + "</p>" +
+"<p>Health Points: " + players.reble2.healthPoints + "</p>");
+
+$("#hanStats").html("<p>" + players.reble3.name + "</p>" + "<p>Attack Point: " + players.reble3.attackPoints + "<p>Counter Attack Points: " + players.reble3.counterPoints + "</p>" +
+"<p>Health Points: " + players.reble3.healthPoints + "</p>");
+
+$("#bobaStats").html("<p>" + players.dark1.name + "</p>" + "<p>Attack Point: " + players.dark1.attackPoints + "<p>Counter Attack Points: " + players.dark1.counterPoints + "</p>" +
+"<p>Health Points: " + players.dark1.healthPoints + "</p>");
+
+$("#stormStats").html("<p>" + players.dark2.name + "</p>" + "<p>Attack Point: " + players.dark2.attackPoints + "<p>Counter Attack Points: " + players.dark2.counterPoints + "</p>" +
+"<p>Health Points: " + players.dark2.healthPoints + "</p>");
+
+$("#darthStats").html("<p>" + players.dark3.name + "</p>" + "<p>Attack Point: " + players.dark3.attackPoints + "<p>Counter Attack Points: " + players.dark3.counterPoints + "</p>" +
+"<p>Health Points: " + players.dark3.healthPoints + "</p>");
+
 $(".reble-button").click(function(){
 if($(this).is("#luke")) {
     if(player1selected.length === 0){
@@ -70,6 +88,7 @@ if($(this).is("#luke")) {
     console.log(player1selected);
     var lukeSound = new Audio("assets/audio/luke.wav");
     lukeSound.play();
+    $("#lukeStats").detach();
     }
 
 
@@ -86,6 +105,7 @@ if($(this).is("#luke")) {
     player1selected.push("true");
     var chewySound = new Audio("assets/audio/chewy.wav");
     chewySound.play();
+    $("#chewyStats").detach();
     }
 
 }if($(this).is("#han")) {
@@ -101,6 +121,7 @@ if($(this).is("#luke")) {
     player1selected.push("true");
     var hanSound = new Audio("assets/audio/han.wav");
     hanSound.play();
+    $("#hanStats").detach();
     }
 
 }});
@@ -122,6 +143,7 @@ if($(this).is("#boba")) {
     console.log(player2selected);
     var bobaSound = new Audio("assets/audio/boba.wav");
     bobaSound.play();
+    $("#bobaStats").detach();
     }
 } if($(this).is("#storm")) {
     if(player2selected.length === 0){
@@ -136,6 +158,7 @@ if($(this).is("#boba")) {
     player2selected.push("true");
     var stormSound = new Audio("assets/audio/storm.wav");
     stormSound.play();
+    $("#stormStats").detach();
     }
 } if($(this).is("#darth") ) {
     if(player2selected.length === 0){
@@ -150,6 +173,7 @@ if($(this).is("#boba")) {
     player2selected.push("true");
     var darthSound = new Audio("assets/audio/darth.wav");
     darthSound.play();
+    $("#darthStats").detach();
     }
 
 }});
@@ -216,6 +240,7 @@ $("#attack1").click(function(){
             resetPlayer1();
             player2selected = [];
             player1selected = [];
+            $("#replay").html("<button id='replay' type='button' class='btn btn-outline-warning'>PLAY AGAIN </button>");
             var winSong = new Audio("assets/audio/win.mp3");
             winSong.play();
             }
