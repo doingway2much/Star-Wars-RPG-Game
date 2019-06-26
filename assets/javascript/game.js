@@ -1,39 +1,39 @@
 var players = {
     reble1: {
     name: "Sky Walker",
-    healthPoints: 120,
-    attackPoints: 10,
-    counterPoints: 20
+    healthPoints: 135,
+    attackPoints: 11,
+    counterPoints: 5
     },   
     reble2: {
     name: "Chewbacca",
-    healthPoints: 105,
-    attackPoints: 8,
-    counterPoints: 15
+    healthPoints: 120,
+    attackPoints: 14,
+    counterPoints: 2
     },   
     reble3: {
     name: "Han Solo",
-    healthPoints: 110,
-    attackPoints: 7,
+    healthPoints: 125,
+    attackPoints: 15,
     counterPoints: 8
     },   
     dark1: {
     name: "Boba Fett",
     healthPoints: 120,
-    attackPoints: 7,
-    counterPoints: 14
+    attackPoints: 9,
+    counterPoints: 13
     },   
     dark2: {
     name: "Stormtrooper",
-    healthPoints: 115,
-    attackPoints: 5,
+    healthPoints: 110,
+    attackPoints: 7,
     counterPoints: 10
     },   
     dark3: {
     name: "Darth Vader",
     healthPoints: 130,
-    attackPoints: 15,
-    counterPoints: 20
+    attackPoints: 50,
+    counterPoints: 25
     }
     };
 
@@ -44,17 +44,12 @@ var attacker = "";
 var player1selected = [];
 var player2selected = [];
 var wins = "";
-var updatedHealth;
+var updatedHealth = 0;
 $("#replay").click(function() {
     console.log("I was clicked");
     location.reload();
 });
 
-// $(".reble-button").hover(function(){
-//     if($(this).is("#luke")) {
-//     console.log("Hover works");
-//     $("#player1details").html("<div class='player1details'>Player Name:" + players.reble1.name + "</div>");
-// }});
 
 $("#lukeStats").html("<p>" + players.reble1.name + "</p>" + "<p>Attack Point: " + players.reble1.attackPoints + "<p>Counter Attack Points: " + players.reble1.counterPoints + "</p>" +
 "<p>Health Points: " + players.reble1.healthPoints + "</p>");
@@ -195,22 +190,16 @@ function resetPlayer1() {
 };
 
 
-$("#attack1").click(function(){
-    
-    // console.log(selectedRebel1.attackPoints);
-    // console.log(selectedDark1.healthPoints);
-    selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.counterPoints;
-    updatedHealth = selectedRebel1.attackPoints + selectedRebel1.attackPoints;
-    selectedRebel1.attackPoints = updatedHealth;
-    selectedDark1.healthPoints = selectedDark1.healthPoints - updatedHealth;
-    
+$("#attack1").click(function(){    
     if(player1selected == "true" && player2selected == "true") {
+        selectedRebel1.healthPoints = selectedRebel1.healthPoints - selectedDark1.counterPoints;
+        updatedHealth = selectedRebel1.attackPoints + updatedHealth;
+        selectedDark1.healthPoints = selectedDark1.healthPoints - updatedHealth;
         var playMarch = new Audio("assets/audio/saberup.wav");
         playMarch.play();
         $("#updates").text("You just attacked " + selectedDark1.name + " for " + updatedHealth + " points" + " and they attacked you back and caused " +  selectedDark1.attackPoints  + " damage");
-        $("#power1").text("Power: " + selectedRebel1.attackPoints);
+        $("#power1").text("Power: " + updatedHealth);
     if  (selectedRebel1.healthPoints < 0 ) {
-        
         alert("You loose better luck next time try starting off slow and then work your way up to the bigget guys");
         selectedDark1 = [];
         $("player1 img").detach();
